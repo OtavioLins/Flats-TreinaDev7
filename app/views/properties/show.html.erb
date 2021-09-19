@@ -1,0 +1,14 @@
+<%= @property.title %>
+<%= @property.description %>
+<%= "Quartos: #{@property.rooms}" %>
+<%= "Banheiros: #{@property.bathrooms}" %>
+<% if @property.pets %>
+    <%= "Aceita pets: Sim" %>
+<% else %>
+    <%= "Aceita pets: Não" %>
+<% end %>
+<% if @property.parking_slot %>
+    <%= "Estacionamento: Sim" %>
+<% else %>
+    <%= "Estacionamento: Não" %>
+<% end %>
