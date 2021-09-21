@@ -47,5 +47,26 @@ describe 'Visitor visits homepage' do
         expect(page).to have_text("Banheiros: 2")
         expect(page).to have_text("Aceita pets: Sim")
         expect(page).to have_text("Estacionamento: Sim")
+        expect(page).to have_text("Preço da diária: R$ 500,00")
+    end
+
+    it 'and view property details and come back to home page' do
+    #Arrange
+        Property.create({title: "Casa em Copacabana", 
+                        description: "Excelente casa, recém reformada com 2 
+                        vagas de garagem", rooms: 3, parking_slot: true, bathrooms: 2,
+                        pets: true, daily_rate: 500})
+
+        Property.create({title: "Cobertura em Manaus", 
+                        description: "Cobertura de 300m2, churrasqueira e 
+                        sauna privativa", rooms: 5, parking_slot: false, bathrooms: 3,
+                        pets: false, daily_rate: 750})
+    #Act
+        visit root_path
+        click_on "Cobertura em Manaus"
+        click_on 'Voltar'
+    
+    #Assert
+        expect(current_path).to eq root_path
     end
 end
