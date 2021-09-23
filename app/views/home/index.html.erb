@@ -1,18 +1,27 @@
 <h1> Flats </h1>
 <h3> Boas vindas ao sistema de locação de apartamentos </h3>
 
+<div> Abaixo segue uma lista dos imóveis disponíveis para locação. Para mais detalhes sobre cada um deles, clique em seu título.</div>
+<div>
+=================================================================
+</div>
+
 <nav>
     <%= link_to("Cadastre seu imóvel aqui", new_property_path)%>
 </nav>
 
 <div>
+=================================================================
+</div>
 
-<%= "Nenhum imóvel disponível" if not @properties.any?%>
+<div>
+<div><%= "Nenhum imóvel disponível" if not @properties.any?%></div>
 
 <% @properties.each do |p| %>
-    <%= link_to p.title, property_path(p.id) %>
-    <%= p.description %>
-    <%= "Quartos: #{p.rooms}" %>
+    <div><%= link_to p.title, property_path(p.id) %></div>
+    <div><%= p.description %></div>
+    <div>Quartos: <%= p.rooms %></div>
+    <div>=================================================================</div>
 <% end %>
 </div>
 
