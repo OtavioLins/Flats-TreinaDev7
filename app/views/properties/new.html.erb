@@ -41,3 +41,10 @@
 <div>
     <%= f.submit "Finalizar Cadastro" %>
 <% end %>
+</div>
+
+<div>
+    <% if (not @property.nil?) and @property.errors.any?%>
+        <%= @property.errors.messages.first.[0][1] %> 
+    <%end%>
+</div>
