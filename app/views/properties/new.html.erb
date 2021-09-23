@@ -45,6 +45,6 @@
 
 <div>
     <% if (not @property.nil?) and @property.errors.any?%>
-        <%= @property.errors.messages.first.[0][1] %> 
+        <%= @property.errors.messages.first[1][0] %> 
     <%end%>
 </div>
