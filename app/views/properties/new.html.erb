@@ -1,0 +1,43 @@
+<h1> Cadastro de Imóvel </h1>
+<p> Preencha no formulário abaixo os dados do imóvel que deseja cadastrar.
+    Todos os campos devem ser preenchidos! </p>
+
+<%= form_with model: @property do |f| %>
+
+<div>
+    <%= f.label :title, "Título"%>
+    <%= f.text_field :title %>
+</div>
+
+<div>
+    <%= f.label :description, "Descrição do Imóvel"%>
+    <%= f.text_field :description %>
+</div>
+
+<div>
+    <%= f.label :rooms, "Número de Quartos"%>
+    <%= f.text_field :rooms %>
+</div>
+
+<div>
+    <%= f.label :bathrooms, "Número de Banheiros"%>
+    <%= f.text_field :bathrooms %>
+</div>
+
+<div>
+    <%= f.label :daily_rate, "Preço da Diária"%>
+    <%= f.text_field :daily_rate %>
+</div>
+
+<div>
+    <%= f.label :parking_slot, "Vaga de Estacionamento"%>
+    <%= f.check_box :parking_slot %>
+</div>
+
+<div>
+    <%= f.label :pets, "Aceita Pets?"%>
+    <%= f.check_box :pets %>
+</div>
+<div>
+    <%= f.submit "Finalizar Cadastro" %>
+<% end %>

@@ -17,18 +17,18 @@ describe 'Visitor visits homepage' do
         visit root_path
 
         #Assert (Garantir que algo aconteceu ou não aconteceu)
-        expect(page).to have_text("Casa em Copacabana")
-        expect(page).to have_text("Excelente casa, recém reformada com 2 vagas de garagem")
-        expect(page).to have_text("Quartos: 3")
+        expect(page).to have_content("Casa em Copacabana")
+        expect(page).to have_content("Excelente casa, recém reformada com 2 vagas de garagem")
+        expect(page).to have_content("Quartos: 3")
 
-        expect(page).to have_text("Cobertura em Manaus")
-        expect(page).to have_text("Cobertura de 300m2, churrasqueira e sauna privativa")
-        expect(page).to have_text("Quartos: 5")
+        expect(page).to have_content("Cobertura em Manaus")
+        expect(page).to have_content("Cobertura de 300m2, churrasqueira e sauna privativa")
+        expect(page).to have_content("Quartos: 5")
     end
 
     it 'and there are no properties available' do
         visit root_path
-        expect(page).to have_text("Nenhum imóvel disponível")
+        expect(page).to have_content("Nenhum imóvel disponível")
     end
     
     it 'and view property details' do
@@ -41,13 +41,13 @@ describe 'Visitor visits homepage' do
 
         click_on "Casa em Copacabana"
 
-        expect(page).to have_text("Casa em Copacabana")
-        expect(page).to have_text("Excelente casa, recém reformada com 2 vagas de garagem")
-        expect(page).to have_text("Quartos: 3")
-        expect(page).to have_text("Banheiros: 2")
-        expect(page).to have_text("Aceita pets: Sim")
-        expect(page).to have_text("Estacionamento: Sim")
-        expect(page).to have_text("Preço da diária: R$ 500,00")
+        expect(page).to have_content("Casa em Copacabana")
+        expect(page).to have_content("Excelente casa, recém reformada com 2 vagas de garagem")
+        expect(page).to have_content("Quartos: 3")
+        expect(page).to have_content("Banheiros: 2")
+        expect(page).to have_content("Aceita pets: Sim")
+        expect(page).to have_content("Estacionamento: Sim")
+        expect(page).to have_content("Preço da diária: R$ 500,00")
     end
 
     it 'and view property details and come back to home page' do
