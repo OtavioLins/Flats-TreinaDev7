@@ -44,6 +44,6 @@ describe "Visitor register property" do
 
         #Assert
         expect(page).to have_content("ERRO: Para cadastrar um imóvel, todos os campos devem ser preenchidos.")    
-    
+        expect(Property.count).to equal(0)
     end
 end

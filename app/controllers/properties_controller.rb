@@ -13,7 +13,7 @@ class PropertiesController < ApplicationController
         if @property.save
             redirect_to @property
         else
-            render new_property_path
+            render :new
         end
     end
 end
