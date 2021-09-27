@@ -1,42 +1,23 @@
-<h1> Cadastro de tipos de Imóvel </h1>
-
-<div>
-<div>
-================================================================================
-</div>
-
-<p> Tipos atualmente cadastrados: </p>
-    <% @lista = PropertyType.all%>
-    <% if @lista.any?%>
-        <% @lista.each do |tipo|%>
-            <li>        
-            <%= tipo.name%>
-            </li>
-        <% end %>
-    <% end %>
-</div>
-
-<div>
-================================================================================
-</div>
+<h1> Cadastro de novo tipo de imóvel </h1>
+<p> Lembre-se que não pode deixar o espaço em branco e nem colocar um tipo já existente </p>
 
 <%= form_with model: @property_type do |f| %>
 
 <div>
-    <%= f.label :name, "Nome"%>
+    <%= f.label :name, "Tipo"%>
     <%= f.text_field :name %>
 </div>
+
 <div>
-    <%= f.submit "Finalizar Cadastro" %>
+    <%= f.submit "Voltar ao cadastro" %>
 </div>
+
 <% end %>
 
 <div>
-    <% if @property_type.errors.any?%>
-        <ul>
-        <% @property_type.errors.full_messages.each do |error| %>
-            <li> <%= error%> </li>
+    <% if (not @property_type.nil?) and @property_type.errors.any?%>
+        <% @property_type.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
         <% end %>
-        </ul>
-    <% end %>
+    <%end%>
 </div>

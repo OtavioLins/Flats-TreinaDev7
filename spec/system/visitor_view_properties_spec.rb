@@ -3,15 +3,19 @@ require 'rails_helper'
 describe 'Visitor visits homepage' do
     it 'and view properties' do
         #Arrange (Preparar os Dados)
-        Property.create({title: "Casa em Copacabana", 
+        property_type = PropertyType.create!(name: "Casa")
+        property_region = PropertyRegion.create!(name: "Sudeste")
+        Property.create!({title: "Casa em Copacabana", 
                          description: "Excelente casa, recém reformada com 2 
                          vagas de garagem", rooms: 3, parking_slot: true, bathrooms: 2,
-                         pets: true, daily_rate: 500})
+                         pets: true, daily_rate: 500, property_type_id: property_type.id, 
+                         property_region_id: property_region.id})
 
-        Property.create({title: "Cobertura em Manaus", 
+        Property.create!({title: "Cobertura em Manaus", 
                          description: "Cobertura de 300m2, churrasqueira e 
                          sauna privativa", rooms: 5, parking_slot: false, bathrooms: 3,
-                         pets: false, daily_rate: 750})
+                         pets: false, daily_rate: 750, property_type_id: property_type.id,
+                         property_region_id: property_region.id})
 
         #Act (Executar a funcionalidade)
         visit root_path
@@ -32,10 +36,14 @@ describe 'Visitor visits homepage' do
     end
     
     it 'and view property details' do
-        Property.create({title: "Casa em Copacabana", 
+        property_type = PropertyType.create!(name: "Casa")
+        property_region = PropertyRegion.create!(name: "Sudeste")
+  
+        Property.create!({title: "Casa em Copacabana", 
                         description: "Excelente casa, recém reformada com 2 
                         vagas de garagem", rooms: 3, parking_slot: true, bathrooms: 2,
-                        pets: true, daily_rate: 500})
+                        pets: true, daily_rate: 500, property_type_id: property_type.id,
+                        property_region_id: property_region.id})
         
         visit root_path
 
@@ -52,15 +60,20 @@ describe 'Visitor visits homepage' do
 
     it 'and view property details and come back to home page' do
     #Arrange
-        Property.create({title: "Casa em Copacabana", 
+        property_type = PropertyType.create!(name: "Casa")
+        property_region = PropertyRegion.create!(name: "Sudeste")
+
+        Property.create!({title: "Casa em Copacabana", 
                         description: "Excelente casa, recém reformada com 2 
                         vagas de garagem", rooms: 3, parking_slot: true, bathrooms: 2,
-                        pets: true, daily_rate: 500})
+                        pets: true, daily_rate: 500, property_type_id: property_type.id,
+                        property_region_id: property_region.id})
 
-        Property.create({title: "Cobertura em Manaus", 
+        Property.create!({title: "Cobertura em Manaus", 
                         description: "Cobertura de 300m2, churrasqueira e 
                         sauna privativa", rooms: 5, parking_slot: false, bathrooms: 3,
-                        pets: false, daily_rate: 750})
+                        pets: false, daily_rate: 750, property_type_id: property_type.id, 
+                        property_region_id: property_region.id})
     #Act
         visit root_path
         click_on "Cobertura em Manaus"

@@ -3,6 +3,12 @@
 <h2><%= @property.description %></h2>
 <div>
 <dl>
+  <dt>Tipo:</dt>
+  <dd><%= @property.property_type.name %></dd>
+
+  <dt>Região:</dt>
+  <dd><%= @property.property_region.name %></dd>
+  
   <dt>Quartos:</dt>
   <dd><%= @property.rooms %></dd>
 

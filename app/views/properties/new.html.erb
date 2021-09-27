@@ -1,12 +1,44 @@
 <h1> Cadastro de Imóvel </h1>
+
+<div>
+================================================================================
+</div>
+
+<p> Lista de Regiões atualmente cadastradas. <%= link_to 'Caso precise adicionar
+ uma nova região, clique aqui', new_property_region_path %><p>
+<% if @property_regions.any? %>
+    <% @property_regions.each do |region| %>
+        <li><%= region.name%></li>
+    <% end %>
+<% else %>
+    <p> Nenhuma região atualmente cadastrada </p>
+<% end %>
+<div>
+================================================================================
+</div>
+
+<p> Lista de tipos de imóveis atualmente cadastrados. <%= link_to 'Caso precise adicionar
+ um novo tipo, clique aqui', new_property_type_path %><p>
+<% if @property_types.any? %>
+    <% @property_types.each do |type| %>
+        <li><%= type.name%></li>
+    <% end %>
+<% else %>
+    <p> Nenhum tipo atualmente cadastrado </p>
+<% end %>
+<div>
+================================================================================
+</div>
+
 <p> Preencha no formulário abaixo os dados do imóvel que deseja cadastrar.
     Todos os campos devem ser preenchidos! </p>
-
+    
 <%= form_with model: @property do |f| %>
 
 <div>
     <%= f.label :title, "Título"%>
     <%= f.text_field :title %>
+    
 </div>
 
 <div>
@@ -30,6 +62,16 @@
 </div>
 
 <div>
+    <%= f.label :property_type_id, "Tipo" %>
+    <%= f.collection_select :property_type_id, @property_types, :id, :name, prompt: 'Escolha um tipo' %>
+</div>
+
+<div>
+    <%= f.label :property_region_id, "Região" %>
+    <%= f.collection_select :property_region_id, @property_regions, :id, :name, prompt: 'Escolha uma região' %>
+</div>
+
+<div>
     <%= f.label :parking_slot, "Vaga de Estacionamento"%>
     <%= f.check_box :parking_slot %>
 </div>
@@ -46,6 +88,8 @@
 
 <div>
     <% if (not @property.nil?) and @property.errors.any?%>
-        <%= @property.errors.messages.first[1][0] %> 
+        <% @property.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
     <%end%>
 </div>
