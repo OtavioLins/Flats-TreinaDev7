@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-describe "Visitor register property type" do
+describe "Visitor register property region" do
     it 'successfully' do 
         #Arrange
-        PropertyRegion.create!(name: "Sudeste")
+        PropertyType.create!(name: "Casa")
 
         #Act
         visit root_path
         click_on "Cadastre seu imóvel aqui"
-        click_on "Caso precise adicionar um novo tipo, clique aqui"
-        fill_in 'Tipo', with: "Casa"
+        click_on "Caso precise adicionar uma nova região, clique aqui"
+        fill_in 'Região', with: "Sul"
         click_on "Voltar ao cadastro"
         fill_in 'Título', with: 'Casa em Florianópolis'
         fill_in 'Descrição do Imóvel', with: 'Ótima casa perto da UFSC'
@@ -17,7 +17,7 @@ describe "Visitor register property type" do
         fill_in 'Número de Banheiros', with: '2'
         fill_in 'Preço da Diária', with: '200'
         select "Casa", from: "Tipo"
-        select "Sudeste", from: "Região"
+        select "Sul", from: "Região"
         check "Aceita Pets?"
         check "Vaga de Estacionamento"
         click_on "Finalizar Cadastro"
@@ -31,16 +31,16 @@ describe "Visitor register property type" do
         expect(page).to have_content("Aceita pets: Sim")     
         expect(page).to have_content("Estacionamento: Sim")     
         expect(page).to have_content("Tipo: Casa")
-        expect(page).to have_content("Região: Sudeste")
+        expect(page).to have_content("Região: Sul")
     end
     
     it "and leave 'name' blank" do
         #Arrange
-        PropertyRegion.create!(name: "Sudeste")
+        PropertyType.create!(name: "Apartamento")
         #Act
         visit root_path
         click_on "Cadastre seu imóvel aqui"
-        click_on "Caso precise adicionar um novo tipo, clique aqui"
+        click_on "Caso precise adicionar uma nova região, clique aqui"
         click_on "Voltar ao cadastro"
         #Assert
         expect(page).to have_content("Name can't be blank")
@@ -53,8 +53,8 @@ describe "Visitor register property type" do
         #Act
         visit root_path
         click_on "Cadastre seu imóvel aqui"
-        click_on "Caso precise adicionar um novo tipo, clique aqui"
-        fill_in 'Tipo', with: "Apartamento"
+        click_on "Caso precise adicionar uma nova região, clique aqui"
+        fill_in 'Região', with: "Sudeste"
         click_on "Voltar ao cadastro"
         #Assert
         expect(page).to have_content("Name has already been taken")

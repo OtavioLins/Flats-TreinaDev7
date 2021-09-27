@@ -1,0 +1,23 @@
+<h1> Cadastro de nova região </h1>
+<p> Lembre-se que não pode deixar o espaço em branco e nem colocar uma região já existente </p>
+
+<%= form_with model: @property_region do |f| %>
+
+<div>
+    <%= f.label :name, "Região"%>
+    <%= f.text_field :name %>
+</div>
+
+<div>
+    <%= f.submit "Voltar ao cadastro" %>
+</div>
+
+<% end %>
+
+<div>
+    <% if (not @property_region.nil?) and @property_region.errors.any?%>
+        <% @property_region.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+    <%end%>
+</div>
