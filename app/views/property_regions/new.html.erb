@@ -1,0 +1,42 @@
+<h1> Cadastro de Região de Imóvel </h1>
+
+<div>
+<div>
+================================================================================
+</div>
+
+<p> Tipos atualmente cadastrados: </p>
+    <% @lista = PropertyRegion.all%>
+    <% if @lista.any?%>
+        <% @lista.each do |tipo|%>
+            <li>        
+            <%= tipo.name%>
+            </li>
+        <% end %>
+    <% end %>
+</div>
+
+<div>
+================================================================================
+</div>
+
+<%= form_with model: @property_region do |f| %>
+
+<div>
+    <%= f.label :name, "Nome"%>
+    <%= f.text_field :name %>
+</div>
+<div>
+    <%= f.submit "Finalizar Cadastro" %>
+</div>
+<% end %>
+
+<div>
+    <% if @property_region.errors.any?%>
+        <ul>
+        <% @property_region.errors.full_messages.each do |error| %>
+            <li> <%= error%> </li>
+        <% end %>
+        </ul>
+    <% end %>
+</div>

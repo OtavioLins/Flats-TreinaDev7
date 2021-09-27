@@ -1,22 +1,21 @@
 <h1> Flats </h1>
 <h3> Boas vindas ao sistema de locação de apartamentos </h3>
 
-<div> Abaixo segue uma lista dos imóveis disponíveis para locação. Para mais detalhes sobre cada um deles, clique em seu título.</div>
 <div>
 =================================================================
 </div>
+<nav>
+<li>
+<%= link_to("Cadastre seu imóvel aqui ||", new_property_path)%>
+<%= link_to("Cadastrar tipo de Imóvel ||", new_property_type_path)%>
+<%= link_to("Cadastrar região do Imóvel", new_property_region_path)%>
+</li>
+</nav>
 <div>
-<nav>
-    <%= link_to("Cadastre seu imóvel aqui", new_property_path)%>
-</nav>
+=================================================================
 </div>
-<nav>
-    <%= link_to("Cadastrar tipo de Imóvel", new_property_type_path)%>
-</nav>
 
-<div>
-=================================================================
-</div>
+<div> Abaixo segue uma lista dos imóveis disponíveis para locação. Para mais detalhes sobre cada um deles, clique em seu título.</div>
 
 <div>
 <div><%= "Nenhum imóvel disponível" if not @properties.any?%></div>

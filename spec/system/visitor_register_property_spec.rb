@@ -6,7 +6,7 @@ describe "Visitor register property" do
 
         #Act
         visit root_path
-        click_on "Cadastre seu imóvel aqui"
+        click_on "Cadastre seu imóvel aqui ||"
         fill_in 'Título', with: 'Casa em Florianópolis'
         fill_in 'Descrição do Imóvel', with: 'Ótima casa perto da UFSC'
         fill_in 'Número de Quartos', with: '3'
@@ -32,7 +32,7 @@ describe "Visitor register property" do
     
         #Act
         visit root_path
-        click_on "Cadastre seu imóvel aqui"
+        click_on "Cadastre seu imóvel aqui ||"
         fill_in 'Título', with: 'Casa em Florianópolis'
         fill_in 'Descrição do Imóvel', with: ''
         fill_in 'Número de Quartos', with: ''
