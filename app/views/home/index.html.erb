@@ -1,26 +1,38 @@
-<h1> Flats </h1>
-<h3> Boas vindas ao sistema de locação de apartamentos </h3>
-
-<div>
-=================================================================
-</div>
-<nav>
-<%= link_to("Cadastre seu imóvel aqui", new_property_path)%>
-</nav>
-<div>
-=================================================================
-</div>
-
-<div> Abaixo segue uma lista dos imóveis disponíveis para locação. Para mais detalhes sobre cada um deles, clique em seu título.</div>
-
-<div>
-<div><%= "Nenhum imóvel disponível" if not @properties.any?%></div>
-
-<% @properties.each do |p| %>
-    <div><%= link_to p.title, property_path(p.id) %></div>
-    <div><%= p.description %></div>
-    <div>Quartos: <%= p.rooms %></div>
+<header>
+    <h1> Flats </h1>
+    <h3> Boas vindas ao sistema de locação de apartamentos </h3>
     <div>=================================================================</div>
-<% end %>
-</div>
+    <nav>
+    <%= link_to("Cadastre seu imóvel aqui", new_property_path)%>
+    </nav>
+    <div>=================================================================</div>
+</header>
 
+<aside>
+    <h3> Filtrar os imóveis disponíveis por tipo:</h3>
+    <nav>
+        <% @property_types.each do |pt| %>
+            <%= link_to pt.name, property_type_path(pt) %>
+        <% end %>
+        <div>=================================================================</div>
+    </nav>
+    <h3> Filtrar os imóveis disponíveis por região:</h3>
+    <nav>
+        <% @property_regions.each do |pr| %>
+            <%= link_to pr.name, property_region_path(pr) %>
+        <% end %>
+        <div>=================================================================</div>
+    </nav>
+</aside>
+
+<section>
+    <div> Abaixo segue uma lista de todos os imóveis disponíveis para locação. Para mais detalhes sobre cada um deles, clique em seu título.</div>
+    <div><%= "Nenhum imóvel disponível" if not @properties.any?%></div>
+
+    <% @properties.each do |p| %>
+        <div><%= link_to p.title, property_path(p.id) %></div>
+        <div><%= p.description %></div>
+        <div>Quartos: <%= p.rooms %></div>
+        <div>=================================================================</div>
+    <% end %>
+</section>

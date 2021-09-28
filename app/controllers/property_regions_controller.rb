@@ -11,4 +11,8 @@ class PropertyRegionsController < ApplicationController
             render :new
         end       
     end
+
+    def show
+        @property_region = PropertyRegion.find(params[:id])
+    end
 end
