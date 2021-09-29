@@ -14,5 +14,6 @@ class PropertyTypesController < ApplicationController
 
     def show
         @property_type = PropertyType.find(params[:id])
+        @properties = @property_type.properties.all
     end
 end

@@ -25,14 +25,4 @@
     </nav>
 </aside>
 
-<section>
-    <div> Abaixo segue uma lista de todos os imóveis disponíveis para locação. Para mais detalhes sobre cada um deles, clique em seu título.</div>
-    <div><%= "Nenhum imóvel disponível" if not @properties.any?%></div>
-
-    <% @properties.each do |p| %>
-        <div><%= link_to p.title, property_path(p.id) %></div>
-        <div><%= p.description %></div>
-        <div>Quartos: <%= p.rooms %></div>
-        <div>=================================================================</div>
-    <% end %>
-</section>
+<%= render "shared/property_preview" %> 

@@ -14,5 +14,6 @@ class PropertyRegionsController < ApplicationController
 
     def show
         @property_region = PropertyRegion.find(params[:id])
+        @properties = @property_region.properties.all
     end
 end
