@@ -4,7 +4,7 @@
     <% @properties.each do |p| %>
         <div><%= link_to p.title, property_path(p.id) %></div>
         <div><%= p.description %></div>
-        <div>Quartos: <%= p.rooms %></div>
+        <div>Número de quartos: <%= p.rooms %></div>
         <div>=================================================================</div>
     <% end %>
 </section>

@@ -1,62 +1,60 @@
 require 'rails_helper'
 
-describe "Visitor register property region" do
+describe 'Visitor register property region' do
     it 'successfully' do 
         #Arrange
-        PropertyType.create!(name: "Casa")
+        PropertyType.create!(name: 'Apartamento')
 
         #Act
         visit root_path
-        click_on "Cadastre seu imóvel aqui"
-        click_on "Caso precise adicionar uma nova região, clique aqui"
-        fill_in 'Região', with: "Sul"
-        click_on "Voltar ao cadastro"
-        fill_in 'Título', with: 'Casa em Florianópolis'
-        fill_in 'Descrição do Imóvel', with: 'Ótima casa perto da UFSC'
-        fill_in 'Número de Quartos', with: '3'
-        fill_in 'Número de Banheiros', with: '2'
-        fill_in 'Preço da Diária', with: '200'
-        select "Casa", from: "Tipo"
-        select "Sul", from: "Região"
-        check "Aceita Pets?"
-        check "Vaga de Estacionamento"
-        click_on "Finalizar Cadastro"
+        click_on 'Cadastre seu imóvel aqui'
+        click_on 'Caso precise adicionar uma nova região, clique aqui'
+        fill_in 'Região', with: 'Santos'
+        click_on 'Voltar ao cadastro'
+        fill_in 'Título', with: 'Apê na baixada Santista'
+        fill_in 'Descrição do imóvel', with: 'Lugar familiar perfeito para curtir um fim de semana no litoral'
+        fill_in 'Número de quartos', with: '2'
+        fill_in 'Número de banheiros', with: '2'
+        fill_in 'Preço da diária', with: '200'
+        select 'Apartamento', from: 'Tipo'
+        select 'Santos', from: 'Região'
+        check 'Aceita pets?'
+        check 'Vaga de estacionamento?'
+        click_on 'Finalizar cadastro'
 
         #Assert
-        expect(page).to have_content("Casa em Florianópolis")   
-        expect(page).to have_content("Ótima casa perto da UFSC")     
-        expect(page).to have_content("3")     
-        expect(page).to have_content("2")     
-        expect(page).to have_content("R$ 200,00")     
-        expect(page).to have_content("Aceita pets: Sim")     
-        expect(page).to have_content("Estacionamento: Sim")     
-        expect(page).to have_content("Tipo: Casa")
-        expect(page).to have_content("Região: Sul")
+        expect(page).to have_content('Apê na baixada Santista')   
+        expect(page).to have_content('Lugar familiar perfeito para curtir um fim de semana no litoral')     
+        expect(page).to have_content('Número de quartos: 2')     
+        expect(page).to have_content('Número de banheiros: 2')     
+        expect(page).to have_content('R$ 200,00')     
+        expect(page).to have_content('Aceita pets? Sim')     
+        expect(page).to have_content('Vaga de estacionamento? Sim')     
+        expect(page).to have_content('Tipo: Apartamento')
+        expect(page).to have_content('Região: Santos')
     end
     
-    it "and leave 'name' blank" do
+    it "and leave 'name' field blank" do
         #Arrange
-        PropertyType.create!(name: "Apartamento")
         #Act
         visit root_path
-        click_on "Cadastre seu imóvel aqui"
-        click_on "Caso precise adicionar uma nova região, clique aqui"
-        click_on "Voltar ao cadastro"
+        click_on 'Cadastre seu imóvel aqui'
+        click_on 'Caso precise adicionar uma nova região, clique aqui'
+        click_on 'Voltar ao cadastro'
         #Assert
-        expect(page).to have_content("Name can't be blank")
+        expect(page).to have_content('Região não pode ficar em branco')
     end
 
-    it "and register a name that's already done" do
+    it 'and tries to register a region thats already registered' do
         #Arrange
-        PropertyRegion.create!(name: "Sudeste")
-        PropertyType.create!(name: "Apartamento")
+        PropertyRegion.create!(name: 'Santos')
         #Act
         visit root_path
-        click_on "Cadastre seu imóvel aqui"
-        click_on "Caso precise adicionar uma nova região, clique aqui"
-        fill_in 'Região', with: "Sudeste"
-        click_on "Voltar ao cadastro"
+        click_on 'Cadastre seu imóvel aqui'
+        click_on 'Caso precise adicionar uma nova região, clique aqui'
+        fill_in 'Região', with: 'Santos'
+        click_on 'Voltar ao cadastro'
         #Assert
-        expect(page).to have_content("Name has already been taken")
+        expect(page).to have_content('Região já está cadastrada')
     end
 end

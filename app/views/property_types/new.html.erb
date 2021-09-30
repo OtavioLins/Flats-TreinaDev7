@@ -6,18 +6,10 @@
 <div>
     <%= f.label :name, "Tipo"%>
     <%= f.text_field :name %>
+    <li><FONT COLOR="#ff0000"><%= @property_type.errors.full_messages_for(:name).to_sentence if (not @property_type.nil?) and (@property_type.errors.any?) %></li></FONT>
 </div>
 
 <div>
     <%= f.submit "Voltar ao cadastro" %>
 </div>
-
-<% end %>
-
-<div>
-    <% if (not @property_type.nil?) and @property_type.errors.any?%>
-        <% @property_type.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-        <% end %>
-    <%end%>
-</div>
+<%end%>

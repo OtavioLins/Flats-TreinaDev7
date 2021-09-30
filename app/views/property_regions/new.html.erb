@@ -6,6 +6,7 @@
 <div>
     <%= f.label :name, "Região"%>
     <%= f.text_field :name %>
+    <li><FONT COLOR="#ff0000"><%= @property_region.errors.full_messages_for(:name).to_sentence if (not @property_region.nil?) and (@property_region.errors.any?) %></li></FONT>
 </div>
 
 <div>
@@ -13,11 +14,3 @@
 </div>
 
 <% end %>
-
-<div>
-    <% if (not @property_region.nil?) and @property_region.errors.any?%>
-        <% @property_region.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-        <% end %>
-    <%end%>
-</div>

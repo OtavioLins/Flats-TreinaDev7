@@ -1,0 +1,16 @@
+---
+pt-BR: 
+  activerecord:
+    models:
+      property: 'Imóvel'
+    attributes:
+      property:
+        title: 'Título'
+        description: 'Descrição'
+        rooms: 'Número de quartos'
+        bathrooms: 'Número de banheiros'
+        daily_rate: 'Preço da diária'
+        property_type: 'Tipo de imóvel'
+        property_region: 'Região do imóvel'
+        parking_slot: 'Vaga de estacionamento?'
+        pets: 'Aceita pets?'

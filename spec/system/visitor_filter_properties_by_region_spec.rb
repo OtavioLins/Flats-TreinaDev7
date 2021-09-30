@@ -11,9 +11,9 @@ describe 'Visitor filter properties by region' do
         visit root_path
 
         #Assert
-        expect(page).to have_link("Bertioga")
-        expect(page).to have_link("Guarujá")
-        expect(page).to have_link("Santos")
+        expect(page).to have_link('Bertioga')
+        expect(page).to have_link('Guarujá')
+        expect(page).to have_link('Santos')
     end
 
     it 'successfully' do

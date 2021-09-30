@@ -3,80 +3,72 @@ require 'rails_helper'
 describe 'Visitor visits homepage' do
     it 'and view properties' do
         #Arrange (Preparar os Dados)
-        property_type = PropertyType.create!(name: "Casa")
-        property_region = PropertyRegion.create!(name: "Sudeste")
-        Property.create!({title: "Casa em Copacabana", 
-                         description: "Excelente casa, recém reformada com 2 
-                         vagas de garagem", rooms: 3, parking_slot: true, bathrooms: 2,
-                         pets: true, daily_rate: 500, property_type_id: property_type.id, 
-                         property_region_id: property_region.id})
-
-        Property.create!({title: "Cobertura em Manaus", 
-                         description: "Cobertura de 300m2, churrasqueira e 
-                         sauna privativa", rooms: 5, parking_slot: false, bathrooms: 3,
-                         pets: false, daily_rate: 750, property_type_id: property_type.id,
-                         property_region_id: property_region.id})
+        ptype1 = PropertyType.create!(name: 'Apartamento')
+        ptype2 = PropertyType.create!(name: 'Casa')
+        pregion1 = PropertyRegion.create!(name: 'Bertioga')
+        pregion2 = PropertyRegion.create!(name: 'Santos')
+        Property.create!(title: 'Apê na baixada Santista', description: 'Lugar familiar
+                         perfeito para curtir um fim de semana no litoral', rooms: 2,
+                         bathrooms: 2, pets: true, parking_slot: true, daily_rate: 200,
+                         property_type: ptype1, property_region: pregion2)
+        Property.create!(title: 'Casa confortável no litoral', description: 'Casa aconchegante
+                         relativamente perto da praia', rooms:3, bathrooms: 2, pets: true, 
+                         parking_slot: true, daily_rate: 350, property_type: ptype2, 
+                         property_region: pregion1)
 
         #Act (Executar a funcionalidade)
         visit root_path
 
         #Assert (Garantir que algo aconteceu ou não aconteceu)
-        expect(page).to have_content("Casa em Copacabana")
-        expect(page).to have_content("Excelente casa, recém reformada com 2 vagas de garagem")
-        expect(page).to have_content("Quartos: 3")
+        expect(page).to have_content('Apê na baixada Santista')
+        expect(page).to have_content('Lugar familiar perfeito para curtir um fim de semana no litoral')
+        expect(page).to have_content('Número de quartos: 2')
 
-        expect(page).to have_content("Cobertura em Manaus")
-        expect(page).to have_content("Cobertura de 300m2, churrasqueira e sauna privativa")
-        expect(page).to have_content("Quartos: 5")
+        expect(page).to have_content('Casa confortável no litoral')
+        expect(page).to have_content('Casa aconchegante relativamente perto da praia')
+        expect(page).to have_content('Número de quartos: 3')
     end
 
     it 'and there are no properties available' do
         visit root_path
-        expect(page).to have_content("Nenhum imóvel disponível")
+        expect(page).to have_content('Nenhum imóvel disponível')
     end
     
     it 'and view property details' do
-        property_type = PropertyType.create!(name: "Casa")
-        property_region = PropertyRegion.create!(name: "Sudeste")
+        ptype2 = PropertyType.create!(name: 'Casa')
+        pregion1 = PropertyRegion.create!(name: 'Bertioga')
   
-        Property.create!({title: "Casa em Copacabana", 
-                        description: "Excelente casa, recém reformada com 2 
-                        vagas de garagem", rooms: 3, parking_slot: true, bathrooms: 2,
-                        pets: true, daily_rate: 500, property_type_id: property_type.id,
-                        property_region_id: property_region.id})
-        
+        Property.create!(title: 'Casa confortável no litoral', description: 'Casa aconchegante
+            relativamente perto da praia', rooms:3, bathrooms: 2, pets: true, 
+            parking_slot: true, daily_rate: 350, property_type: ptype2, 
+            property_region: pregion1)
+
         visit root_path
 
-        click_on "Casa em Copacabana"
+        click_on 'Casa confortável no litoral'
 
-        expect(page).to have_content("Casa em Copacabana")
-        expect(page).to have_content("Excelente casa, recém reformada com 2 vagas de garagem")
-        expect(page).to have_content("Quartos: 3")
-        expect(page).to have_content("Banheiros: 2")
-        expect(page).to have_content("Aceita pets: Sim")
-        expect(page).to have_content("Estacionamento: Sim")
-        expect(page).to have_content("Preço da diária: R$ 500,00")
+        expect(page).to have_content('Casa confortável no litoral')
+        expect(page).to have_content('Casa aconchegante relativamente perto da praia')
+        expect(page).to have_content('Número de quartos: 3')
+        expect(page).to have_content('Número de banheiros: 2')
+        expect(page).to have_content('Aceita pets? Sim')
+        expect(page).to have_content('Vaga de estacionamento? Sim')
+        expect(page).to have_content('Preço da diária: R$ 350,00')
     end
 
     it 'and view property details and come back to home page' do
     #Arrange
-        property_type = PropertyType.create!(name: "Casa")
-        property_region = PropertyRegion.create!(name: "Sudeste")
+    ptype2 = PropertyType.create!(name: 'Casa')
+    pregion1 = PropertyRegion.create!(name: 'Bertioga')
 
-        Property.create!({title: "Casa em Copacabana", 
-                        description: "Excelente casa, recém reformada com 2 
-                        vagas de garagem", rooms: 3, parking_slot: true, bathrooms: 2,
-                        pets: true, daily_rate: 500, property_type_id: property_type.id,
-                        property_region_id: property_region.id})
+    Property.create!(title: 'Casa confortável no litoral', description: 'Casa aconchegante
+        relativamente perto da praia', rooms:3, bathrooms: 2, pets: true, 
+        parking_slot: true, daily_rate: 350, property_type: ptype2, 
+        property_region: pregion1)
 
-        Property.create!({title: "Cobertura em Manaus", 
-                        description: "Cobertura de 300m2, churrasqueira e 
-                        sauna privativa", rooms: 5, parking_slot: false, bathrooms: 3,
-                        pets: false, daily_rate: 750, property_type_id: property_type.id, 
-                        property_region_id: property_region.id})
     #Act
         visit root_path
-        click_on "Cobertura em Manaus"
+        click_on 'Casa confortável no litoral'
         click_on 'Voltar'
     
     #Assert

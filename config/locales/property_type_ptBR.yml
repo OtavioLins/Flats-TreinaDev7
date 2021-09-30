@@ -1,0 +1,8 @@
+---
+pt-BR: 
+  activerecord:
+    models:
+      property_type: 'Tipo de imóvel'
+    attributes:
+      property_type:
+        name: 'Tipo'

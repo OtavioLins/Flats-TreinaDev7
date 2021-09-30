@@ -36,60 +36,58 @@
 <%= form_with model: @property do |f| %>
 
 <div>
-    <%= f.label :title, "Título"%>
+    <%= f.label :title %>
     <%= f.text_field :title %>
-    
+    <li><FONT COLOR="#ff0000"><%= @property.errors.full_messages_for(:title).to_sentence if (not @property.nil?) and (@property.errors.any?) %></li></FONT>
 </div>
 
 <div>
-    <%= f.label :description, "Descrição do Imóvel"%>
+    <%= f.label :description, "Descrição do imóvel"%>
     <%= f.text_field :description %>
+    <li><FONT COLOR="#ff0000"><%= @property.errors.full_messages_for(:description).to_sentence if (not @property.nil?) and (@property.errors.any?) %></li></FONT>
 </div>
 
 <div>
-    <%= f.label :rooms, "Número de Quartos"%>
+    <%= f.label :rooms%>
     <%= f.text_field :rooms %>
+    <li><FONT COLOR="#ff0000"><%= @property.errors.full_messages_for(:rooms).to_sentence if (not @property.nil?) and (@property.errors.any?) %></li></FONT>
 </div>
 
 <div>
-    <%= f.label :bathrooms, "Número de Banheiros"%>
+    <%= f.label :bathrooms%>
     <%= f.text_field :bathrooms %>
+    <li><FONT COLOR="#ff0000"><%= @property.errors.full_messages_for(:bathrooms).to_sentence if (not @property.nil?) and (@property.errors.any?) %></li></FONT>
 </div>
 
 <div>
-    <%= f.label :daily_rate, "Preço da Diária"%>
+    <%= f.label :daily_rate%>
     <%= f.text_field :daily_rate %>
+    <li><FONT COLOR="#ff0000"><%= @property.errors.full_messages_for(:daily_rate).to_sentence if (not @property.nil?) and (@property.errors.any?) %></li></FONT>
 </div>
 
 <div>
-    <%= f.label :property_type_id, "Tipo" %>
+    <%= f.label :property_type_id, 'Tipo' %>
     <%= f.collection_select :property_type_id, @property_types, :id, :name, prompt: 'Escolha um tipo' %>
+    <li><FONT COLOR="#ff0000"><%= @property.errors.full_messages_for(:property_type).to_sentence if (not @property.nil?) and (@property.errors.any?) %></li></FONT>
 </div>
 
 <div>
-    <%= f.label :property_region_id, "Região" %>
+    <%= f.label :property_region_id, 'Região' %>
     <%= f.collection_select :property_region_id, @property_regions, :id, :name, prompt: 'Escolha uma região' %>
+    <li><FONT COLOR="#ff0000"><%= @property.errors.full_messages_for(:property_region).to_sentence if (not @property.nil?) and (@property.errors.any?) %></li></FONT>
 </div>
 
 <div>
-    <%= f.label :parking_slot, "Vaga de Estacionamento"%>
+    <%= f.label :parking_slot %>
     <%= f.check_box :parking_slot %>
 </div>
 
 <div>
-    <%= f.label :pets, "Aceita Pets?"%>
+    <%= f.label :pets %>
     <%= f.check_box :pets %>
 </div>
 <div>
-    <%= f.submit "Finalizar Cadastro" %>
+    <%= f.submit "Finalizar cadastro" %>
 </div>
 
 <% end %>
-
-<div>
-    <% if (not @property.nil?) and @property.errors.any?%>
-        <% @property.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-        <% end %>
-    <%end%>
-</div>

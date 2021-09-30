@@ -1,0 +1,8 @@
+---
+pt-BR: 
+  activerecord:
+    models:
+      property_region: 'Região do imóvel'
+    attributes:
+      property_region:
+        name: 'Região'

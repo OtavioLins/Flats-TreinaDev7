@@ -11,9 +11,9 @@ describe 'Visitor filter properties by type' do
         visit root_path
 
         #Assert
-        expect(page).to have_link("Apartamento")
-        expect(page).to have_link("Casa")
-        expect(page).to have_link("Sítio")
+        expect(page).to have_link('Apartamento')
+        expect(page).to have_link('Casa')
+        expect(page).to have_link('Sítio')
     end
 
     it 'successfully' do
