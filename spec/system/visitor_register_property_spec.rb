@@ -45,16 +45,41 @@ describe 'Visitor register property' do
         fill_in 'Número de quartos', with: ''
         fill_in 'Número de banheiros', with: ''
         fill_in 'Preço da diária', with: '200'
-        check "Aceita pets?"
-        check "Vaga de estacionamento?"
-        select "Apartamento", from: "Tipo"
-        select "Santos", from: "Região" 
-        click_on "Finalizar cadastro"
+        check 'Aceita pets?'
+        check 'Vaga de estacionamento?'
+        select 'Apartamento', from: 'Tipo'
+        select 'Santos', from: 'Região' 
+        click_on 'Finalizar cadastro'
 
         #Assert
-        expect(page).to have_content("Descrição não pode ficar em branco")    
-        expect(page).to have_content("Número de quartos não pode ficar em branco")    
-        expect(page).to have_content("Número de banheiros não pode ficar em branco")   
+        expect(page).to have_content('Descrição não pode ficar em branco')    
+        expect(page).to have_content('Número de quartos não é um número')    
+        expect(page).to have_content('Número de banheiros não é um número')   
+        expect(Property.count).to equal(0)
+    end
+    it 'and tries to register wrong numerical values' do 
+        #Arrange
+        PropertyType.create!(name: 'Apartamento')
+        PropertyRegion.create!(name: 'Santos')
+    
+        #Act
+        visit root_path
+        click_on 'Cadastre seu imóvel aqui'
+        fill_in 'Título', with: 'Apê na baixada Santista'
+        fill_in 'Descrição do imóvel', with: ''
+        fill_in 'Número de quartos', with: '-2'
+        fill_in 'Número de banheiros', with: '2.4'
+        fill_in 'Preço da diária', with: '200.35'
+        check 'Aceita pets?'
+        check 'Vaga de estacionamento?'
+        select 'Apartamento', from: 'Tipo'
+        select 'Santos', from: 'Região' 
+        click_on 'Finalizar cadastro'
+
+        #Assert
+        expect(page).to have_content('Número de quartos deve ser maior que 0')    
+        expect(page).not_to have_content('Preço da diária deve ser um número inteiro')    
+        expect(page).to have_content('Número de banheiros deve ser um número inteiro')   
         expect(Property.count).to equal(0)
     end
 end
