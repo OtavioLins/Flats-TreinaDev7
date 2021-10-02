@@ -5,6 +5,8 @@ describe 'Visitor register property' do
         #Arrange
         PropertyType.create!(name: 'Apartamento')
         PropertyRegion.create!(name: 'Santos')
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+        login_as property_owner, scope: :property_owner
 
         #Act
         visit root_path
@@ -36,7 +38,8 @@ describe 'Visitor register property' do
         #Arrange
         PropertyType.create!(name: 'Apartamento')
         PropertyRegion.create!(name: 'Santos')
-    
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+        login_as property_owner, scope: :property_owner    
         #Act
         visit root_path
         click_on 'Cadastre seu imóvel aqui'
@@ -61,7 +64,8 @@ describe 'Visitor register property' do
         #Arrange
         PropertyType.create!(name: 'Apartamento')
         PropertyRegion.create!(name: 'Santos')
-    
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+        login_as property_owner, scope: :property_owner    
         #Act
         visit root_path
         click_on 'Cadastre seu imóvel aqui'

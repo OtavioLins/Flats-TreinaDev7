@@ -4,7 +4,8 @@ describe 'Visitor register property region' do
     it 'successfully' do 
         #Arrange
         PropertyType.create!(name: 'Apartamento')
-
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+        login_as property_owner, scope: :property_owner
         #Act
         visit root_path
         click_on 'Cadastre seu imóvel aqui'
@@ -36,6 +37,8 @@ describe 'Visitor register property region' do
     
     it "and leave 'name' field blank" do
         #Arrange
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+        login_as property_owner, scope: :property_owner
         #Act
         visit root_path
         click_on 'Cadastre seu imóvel aqui'
@@ -47,6 +50,8 @@ describe 'Visitor register property region' do
 
     it 'and tries to register a region thats already registered' do
         #Arrange
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+        login_as property_owner, scope: :property_owner
         PropertyRegion.create!(name: 'Santos')
         #Act
         visit root_path
