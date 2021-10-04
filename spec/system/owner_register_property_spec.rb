@@ -32,6 +32,7 @@ describe 'Owner register property' do
         expect(page).to have_content('Vaga de estacionamento? Sim')     
         expect(page).to have_content('Tipo: Apartamento')
         expect(page).to have_content('Região: Santos')
+        expect(page).to have_content('Imóvel de: jane@doe.com.br')
     end
     
     it 'and leave some attributes blank' do 

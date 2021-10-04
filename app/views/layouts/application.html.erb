@@ -13,9 +13,12 @@
   <body>
     <nav>
       <% if property_owner_signed_in? %> 
-        <p><%= current_property_owner.email %></p> 
-        <p><%= link_to 'Sair', destroy_property_owner_session_path, method: :delete %></p>
-        <p><%= link_to('Cadastre seu imóvel aqui', new_property_path)%></p>
+        <ul>
+          <li><%= current_property_owner.email %></li> 
+          <li><%= link_to 'Sair', destroy_property_owner_session_path, method: :delete %></li>
+          <li><%= link_to('Cadastre seu imóvel aqui', new_property_path)%></li>
+          <li><%= link_to('Meus imóveis', my_properties_properties_path)%></li>
+        </ul>
         <div>=================================================================</div>
       <% else %>
         <p><%= link_to 'Entrar como proprietário', new_property_owner_session_path %></p>

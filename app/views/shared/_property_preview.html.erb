@@ -1,5 +1,7 @@
 <section>
-    <div><%= "Nenhum imóvel disponível" if not @properties.any?%></div>
+    <div><%= "Nenhum imóvel cadastrado," if not @properties.any?%>
+    <%= link_to 'clique aqui para cadastrar um imóvel', new_property_path %>
+    </div>
 
     <% @properties.each do |p| %>
         <div><%= link_to p.title, property_path(p.id) %></div>

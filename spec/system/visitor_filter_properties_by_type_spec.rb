@@ -18,6 +18,7 @@ describe 'Visitor filter properties by type' do
 
     it 'successfully' do
         #Arrange
+        otavio = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
         ptype1 = PropertyType.create!(name: 'Apartamento')
         ptype2 = PropertyType.create!(name: 'Casa')
         pregion1 = PropertyRegion.create!(name: 'Bertioga')
@@ -25,11 +26,11 @@ describe 'Visitor filter properties by type' do
         Property.create!(title: 'Apê na baixada Santista', description: 'Lugar familiar
                          perfeito para curtir um fim de semana no litoral', rooms: 2,
                          bathrooms: 2, pets: true, parking_slot: true, daily_rate: 200,
-                         property_type: ptype1, property_region: pregion2)
+                         property_type: ptype1, property_region: pregion2, property_owner: otavio)
         Property.create!(title: 'Casa confortável no litoral', description: 'Casa aconchegante
                          relativamente perto da praia', rooms:3, bathrooms: 2, pets: true, 
                          parking_slot: true, daily_rate: 350, property_type: ptype2, 
-                         property_region: pregion1)
+                         property_region: pregion1, property_owner: otavio)
         #Act
         visit root_path
         click_on 'Apartamento'
