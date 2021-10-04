@@ -1,4 +1,5 @@
 class PropertiesController < ApplicationController
+    before_action :authenticate_property_owner!, except: :show
     def show
         @property = Property.find(params[:id])
     end

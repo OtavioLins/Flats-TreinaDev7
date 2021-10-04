@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Visitor register property type' do
+describe 'Owner register property type' do
     it 'successfully' do 
         #Arrange
         PropertyRegion.create!(name: 'Santos')
