@@ -2,11 +2,9 @@
 pt-BR:
   activerecord:
     models:
-      property_owner: 'Proprietário'
+      user: 'Usuário'
     attributes:
-      property_owner:
+      user:
         password: 'Senha'
         password_confirmation: 'Confirme sua senha'
         remember_me: 'Lembre de mim'
-
-
