@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   end
   resources :property_types, only: [:show, :new, :create]
   resources :property_regions, only: [:show, :new, :create]
+  resources :property_reservations, only: [:create]
 end
