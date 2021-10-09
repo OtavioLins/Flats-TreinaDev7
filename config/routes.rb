@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     collection do
       get 'my_properties'
     end
+    resources :property_reservations, only: [:create, :show], shallow: true
   end
   resources :property_types, only: [:show, :new, :create]
   resources :property_regions, only: [:show, :new, :create]
-  resources :property_reservations, only: [:create]
 end

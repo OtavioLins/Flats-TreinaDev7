@@ -31,15 +31,15 @@
 </div>
 
 <h3> Verificar datas </h3>
-<%= form_with model: @property_reservation do |form|%>
+<%= form_with model: [@property, @property_reservation] do |form|%>
   <%= form.label :start_date, 'Data de início'%>
   <%= form.date_field :start_date%>
 
   <%= form.label :end_date, 'Data de término'%>
   <%= form.date_field :end_date%>
 
-  <%= form.label :guests, 'Quantidade de pessoas'%>
-  <%= form.number_field :guests, step: 1, min: 1%>
+  <%= form.label :guests_integer, 'Quantidade de pessoas'%>
+  <%= form.number_field :guests_integer, step: 1, min: 1%>
 
   <%= form.submit 'Enviar reserva'%>
 <% end %>
